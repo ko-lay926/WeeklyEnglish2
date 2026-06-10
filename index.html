@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WeeklyEnglish Pro</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="splash">
+  <h1>📘 WeeklyEnglish</h1>
+  <p>Loading...</p>
+</div>
+
+<div class="container hidden" id="app">
+
+<h1>📘 WeeklyEnglish Pro</h1>
+
+<div id="name-screen">
+<h2>Enter Name</h2>
+<input id="studentName" placeholder="Your Name">
+<button onclick="saveName()">Start</button>
+</div>
+
+<div id="main-menu" class="hidden">
+<button onclick="openWeekMenu()">Start Quiz</button>
+<button onclick="showResults()">My Results</button>
+<button onclick="showLeaderboard()">Leaderboard</button>
+<button onclick="updateQuizzes()">Update Quizzes</button>
+</div>
+
+<div id="week-menu" class="hidden">
+<h2>Select Week</h2>
+<div id="weekButtons"></div>
+<button onclick="goHome()">Back</button>
+</div>
+
+<div id="quiz-box" class="hidden">
+<p id="progress"></p>
+<h2 id="question"></h2>
+<div id="options"></div>
+</div>
+
+<div id="result" class="hidden">
+<h2>Score</h2>
+<p id="scoreText"></p>
+<button onclick="goHome()">Home</button>
+</div>
+
+<div id="history" class="hidden">
+<h2>Results</h2>
+<div id="historyList"></div>
+</div>
+
+<div id="leaderboard" class="hidden">
+<h2>Leaderboard</h2>
+<div id="board"></div>
+</div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
