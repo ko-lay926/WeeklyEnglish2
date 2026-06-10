@@ -1,39 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Noun & Articles Quiz</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WeeklyEnglish Quiz</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fb;
+    text-align:center;
+    margin:0;
+    padding:20px;
+}
+
+h1{
+    color:#2c3e50;
+}
+
+#welcome{
+    color:#27ae60;
+    font-weight:bold;
+}
+
+.levels{
+    margin:15px 0;
+}
+
+.levels button{
+    margin:4px;
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.quiz-box{
+    background:white;
+    max-width:600px;
+    margin:auto;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.option{
+    display:block;
+    width:100%;
+    margin:8px 0;
+    padding:10px;
+    cursor:pointer;
+}
+
+#result{
+    font-size:18px;
+    font-weight:bold;
+    margin-top:15px;
+}
+</style>
 </head>
 <body>
 
-  <div class="app">
+<h1>📘 WeeklyEnglish Quiz</h1>
 
-    <h1>📘 Noun & Articles Quiz</h1>
+<h3 id="welcome"></h3>
 
-    <div class="levels">
-      <button onclick="changeLevel('level1')">Level 1</button>
-      <button onclick="changeLevel('level2')">Level 2</button>
-      <button onclick="changeLevel('level3')">Level 3</button>
-      <button onclick="changeLevel('level4')">Level 4</button>
-      <button onclick="changeLevel('level5')">Level 5</button>
-      <button onclick="changeLevel('level6')">Level 6</button>
-      <button onclick="changeLevel('level7')">Level 7</button>
-      <button onclick="changeLevel('level8')">Level 8</button>
-      <button onclick="changeLevel('level9')">Level 9</button>
-      <button onclick="changeLevel('level10')">Level 10</button>
-    </div>
+<div class="levels">
+<button onclick="changeLevel('level1')">Level 1</button>
+<button onclick="changeLevel('level2')">Level 2</button>
+<button onclick="changeLevel('level3')">Level 3</button>
+<button onclick="changeLevel('level4')">Level 4</button>
+<button onclick="changeLevel('level5')">Level 5</button>
+<button onclick="changeLevel('level6')">Level 6</button>
+<button onclick="changeLevel('level7')">Level 7</button>
+<button onclick="changeLevel('level8')">Level 8</button>
+<button onclick="changeLevel('level9')">Level 9</button>
+<button onclick="changeLevel('level10')">Level 10</button>
+</div>
 
-    <div class="quiz-box">
-      <h2 id="question">Loading...</h2>
-      <div id="options"></div>
-    </div>
+<div class="quiz-box">
 
-    <div id="result"></div>
+<h2 id="question">Loading...</h2>
 
-  </div>
+<div id="options"></div>
 
-  <script src="script.js"></script>
+<div id="result"></div>
+
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
