@@ -1,65 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WeeklyEnglish Pro</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Noun & Articles Quiz</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="splash">
-  <h1>📘 WeeklyEnglish</h1>
-  <p>Loading...</p>
-</div>
+  <div class="app">
 
-<div class="container hidden" id="app">
+    <h1>📘 Noun & Articles Quiz</h1>
 
-<h1>📘 WeeklyEnglish Pro</h1>
+    <div class="levels">
+      <button onclick="changeLevel('level1')">Level 1</button>
+      <button onclick="changeLevel('level2')">Level 2</button>
+      <button onclick="changeLevel('level3')">Level 3</button>
+      <button onclick="changeLevel('level4')">Level 4</button>
+      <button onclick="changeLevel('level5')">Level 5</button>
+      <button onclick="changeLevel('level6')">Level 6</button>
+      <button onclick="changeLevel('level7')">Level 7</button>
+      <button onclick="changeLevel('level8')">Level 8</button>
+      <button onclick="changeLevel('level9')">Level 9</button>
+      <button onclick="changeLevel('level10')">Level 10</button>
+    </div>
 
-<div id="name-screen">
-<h2>Enter Name</h2>
-<input id="studentName" placeholder="Your Name">
-<button onclick="saveName()">Start</button>
-</div>
+    <div class="quiz-box">
+      <h2 id="question">Loading...</h2>
+      <div id="options"></div>
+    </div>
 
-<div id="main-menu" class="hidden">
-<button onclick="openWeekMenu()">Start Quiz</button>
-<button onclick="showResults()">My Results</button>
-<button onclick="showLeaderboard()">Leaderboard</button>
-<button onclick="updateQuizzes()">Update Quizzes</button>
-</div>
+    <div id="result"></div>
 
-<div id="week-menu" class="hidden">
-<h2>Select Week</h2>
-<div id="weekButtons"></div>
-<button onclick="goHome()">Back</button>
-</div>
+  </div>
 
-<div id="quiz-box" class="hidden">
-<p id="progress"></p>
-<h2 id="question"></h2>
-<div id="options"></div>
-</div>
-
-<div id="result" class="hidden">
-<h2>Score</h2>
-<p id="scoreText"></p>
-<button onclick="goHome()">Home</button>
-</div>
-
-<div id="history" class="hidden">
-<h2>Results</h2>
-<div id="historyList"></div>
-</div>
-
-<div id="leaderboard" class="hidden">
-<h2>Leaderboard</h2>
-<div id="board"></div>
-</div>
-
-</div>
-
-<script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
