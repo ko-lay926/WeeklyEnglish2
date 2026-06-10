@@ -1,69 +1,159 @@
-const QUIZ_URL = "https://ko-lay926.github.io/WeeklyEnglish2/quizzes.json";
+const QUIZ_URL =
+"https://ko-lay926.github.io/WeeklyEnglish2/www/quizzes.json";
 
 let quizData = {};
 let currentLevel = "level1";
 let currentIndex = 0;
 let score = 0;
 
-async function loadQuiz() {
-  try {
-    const res = await fetch(QUIZ_URL);
-    quizData = await res.json();
+let username = localStorage.getItem("username");
+
+if(!username){
+    username = prompt("Enter your name");
+    localStorage.setItem("username", username);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    document.getElementById("welcome").innerText =
+    "Welcome, " + username + " 👋";
+
+    loadQuiz();
+});
+
+async function loadQuiz(){
+
+    try{
+
+        const response = await fetch(QUIZ_URL);
+        quizData = await response.json();
+
+        showQuestion();
+
+    }catch(error){
+
+        document.getElementById("question").innerText =
+        "Failed to load quiz.";
+
+        console.error(error);
+    }
+}
+
+function changeLevel(level){
+
+    const num = parseInt(level.replace("level",""));
+
+    if(num > 1){
+
+        const prev = "level" + (num - 1);
+
+        if(localStorage.getItem(prev + "_passed") !== "true"){
+
+            alert(
+            "Complete " +
+            prev +
+            " with 100% score first."
+            );
+
+            return;
+        }
+    }
+
+    currentLevel = level;
+    currentIndex = 0;
+    score = 0;
+
+    document.getElementById("result").innerText = "";
 
     showQuestion();
-  } catch (err) {
-    console.error("Error loading quiz:", err);
-  }
 }
 
-function changeLevel(level) {
-  currentLevel = level;
-  currentIndex = 0;
-  score = 0;
-  document.getElementById("result").innerText = "";
-  showQuestion();
+function showQuestion(){
+
+    const q =
+    quizData[currentLevel].questions[currentIndex];
+
+    document.getElementById("question").innerText =
+    q.q;
+
+    const optionsDiv =
+    document.getElementById("options");
+
+    optionsDiv.innerHTML = "";
+
+    q.options.forEach((option,index)=>{
+
+        const btn =
+        document.createElement("button");
+
+        btn.className = "option";
+
+        btn.innerText = option;
+
+        btn.onclick = ()=>checkAnswer(index);
+
+        optionsDiv.appendChild(btn);
+    });
 }
 
-function showQuestion() {
-  const qData = quizData[currentLevel].questions[currentIndex];
+function checkAnswer(selected){
 
-  document.getElementById("question").innerText = qData.q;
+    const q =
+    quizData[currentLevel].questions[currentIndex];
 
-  const optionsDiv = document.getElementById("options");
-  optionsDiv.innerHTML = "";
+    if(selected === q.answer){
 
-  qData.options.forEach((opt, i) => {
-    const btn = document.createElement("button");
-    btn.innerText = opt;
+        score++;
 
-    btn.onclick = () => checkAnswer(i);
+        document.getElementById("result").innerText =
+        "✅ Correct";
 
-    optionsDiv.appendChild(btn);
-  });
-}
+    }else{
 
-function checkAnswer(selected) {
-  const qData = quizData[currentLevel].questions[currentIndex];
-
-  if (selected === qData.answer) {
-    score++;
-    document.getElementById("result").innerText = "✅ Correct!";
-  } else {
-    document.getElementById("result").innerText = "❌ Wrong!";
-  }
-
-  currentIndex++;
-
-  setTimeout(() => {
-    if (currentIndex < quizData[currentLevel].questions.length) {
-      showQuestion();
-    } else {
-      document.getElementById("question").innerText = "Level Completed 🎉";
-      document.getElementById("options").innerHTML = "";
-      document.getElementById("result").innerText =
-        "Score: " + score + " / 10";
+        document.getElementById("result").innerText =
+        "❌ Wrong";
     }
-  }, 800);
+
+    currentIndex++;
+
+    setTimeout(()=>{
+
+        if(
+        currentIndex <
+        quizData[currentLevel].questions.length
+        ){
+
+            showQuestion();
+
+        }else{
+
+            finishLevel();
+        }
+
+    },600);
 }
 
-window.onload = loadQuiz;
+function finishLevel(){
+
+    const total =
+    quizData[currentLevel].questions.length;
+
+    document.getElementById("options").innerHTML = "";
+
+    document.getElementById("question").innerText =
+    "Level Finished 🎉";
+
+    document.getElementById("result").innerText =
+    "Score: " + score + " / " + total;
+
+    if(score === total){
+
+        localStorage.setItem(
+        currentLevel + "_passed",
+        "true"
+        );
+
+        document.getElementById("result").innerText +=
+        "\n🏆 Perfect! Next level unlocked.";
+    }
+                      }
