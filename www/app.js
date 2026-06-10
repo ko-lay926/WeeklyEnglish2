@@ -14,7 +14,7 @@ week1:{questions:[]}
 
 async function updateQuizzes(){
   try{
-    const QUIZ_URL = "https://YOUR_GITHUB_USERNAME.github.io/WeeklyEnglish/www/quizzes.json";
+    const QUIZ_URL = "https://ko-lay926.github.io/WeeklyEnglish2/www/quizzes.json";
 
     const response = await fetch(QUIZ_URL, {cache:"no-store"});
 
