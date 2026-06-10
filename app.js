@@ -12,7 +12,7 @@ document.getElementById("app").classList.remove("hidden");
 
 async function updateQuizzes(){
 try{
-const url="https://YOUR_GITHUB.github.io/WeeklyEnglish/www/quizzes.json";
+const url="https://ko-lay926.github.io/WeeklyEnglish2/quizzes.json";
 const res=await fetch(url,{cache:"no-store"});
 const data=await res.json();
 
