@@ -39,6 +39,12 @@ async function loadQuiz(){
     }
 }
 
+function resetProgress() {
+    localStorage.clear();
+    alert("Progress reset!");
+    location.reload();
+}
+
 function changeLevel(level){
 
     const num = parseInt(level.replace("level",""));
