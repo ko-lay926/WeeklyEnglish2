@@ -63,17 +63,20 @@ function createLevelButtons() {
     }
 }
 
-function changeLevel(level) {
+function changeLevel(level){
+
+    document.getElementById("levelScreen").style.display =
+    "none";
+
+    document.getElementById("quizScreen").style.display =
+    "block";
 
     currentLevel = level;
     currentIndex = 0;
     score = 0;
 
-    document.getElementById("result").innerHTML = "";
-
     showQuestion();
 }
-
 function showQuestion() {
 
     const q =
@@ -172,11 +175,25 @@ function finishLevel() {
         JSON.stringify(history)
     );
 
-    document.getElementById("question").innerText =
-        "Level Finished 🎉";
+    document.getElementById("question").innerHTML =
+`
+🎉 Level Completed!
 
-    document.getElementById("options").innerHTML = "";
+<br><br>
 
+Score: ${score}/${total}
+
+<br>
+
+${percent}%
+`;
+
+document.getElementById("options").innerHTML =
+`
+<button onclick="showLevelScreen()">
+🏠 Back to Levels
+</button>
+`;
     document.getElementById("result").innerHTML =
         `
         Score: ${score}/${total}<br>
@@ -197,6 +214,15 @@ function finishLevel() {
         document.getElementById("result").innerHTML +=
             "<br>🏆 Next Level Unlocked";
     }
+}
+
+function showLevelScreen(){
+
+    document.getElementById("quizScreen").style.display =
+    "none";
+
+    document.getElementById("levelScreen").style.display =
+    "block";
 }
 
 function showHistory() {
