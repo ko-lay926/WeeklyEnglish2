@@ -240,11 +240,21 @@ Score: ${score}
 
 Keep learning English!`;
 
-    window.open(
-        "https://t.me/share/url?url=&text=" +
-        encodeURIComponent(text),
-        "_blank"
-    );
+    if (navigator.share) {
+
+        navigator.share({
+            title: "WeeklyEnglish Quiz",
+            text: text
+        });
+
+    } else {
+
+        window.open(
+            "https://t.me/share/url?text=" +
+            encodeURIComponent(text),
+            "_blank"
+        );
+    }
 }
 
 function resetProgress() {
