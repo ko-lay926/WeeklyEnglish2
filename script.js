@@ -75,8 +75,20 @@ function changeLevel(level){
     currentIndex = 0;
     score = 0;
 
+    document.getElementById("result").innerHTML = "";
+
     showQuestion();
 }
+
+function showLevelScreen(){
+
+    document.getElementById("quizScreen").style.display =
+    "none";
+
+    document.getElementById("levelScreen").style.display =
+    "block";
+}
+
 function showQuestion() {
 
     const q =
@@ -214,15 +226,6 @@ document.getElementById("options").innerHTML =
         document.getElementById("result").innerHTML +=
             "<br>🏆 Next Level Unlocked";
     }
-}
-
-function showLevelScreen(){
-
-    document.getElementById("quizScreen").style.display =
-    "none";
-
-    document.getElementById("levelScreen").style.display =
-    "block";
 }
 
 function showHistory() {
